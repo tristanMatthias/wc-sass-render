@@ -1,0 +1,17 @@
+{
+  "name": "wc-sass-render",
+  "version": "0.0.1",
+  "description": "Render Sass into lit templates",
+  "main": "index.js",
+  "bin": {
+    "sass-render": "bin/sass-render.js"
+  },
+  "author": "Google",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.4",
+    "node-sass": "^4.8.3",
+    "recursive-readdir": "^2.2.2"
+  }
+}
