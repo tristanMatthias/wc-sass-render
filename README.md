@@ -1,5 +1,5 @@
 # Web Component SASS Render
-sCompile Sass files to a [lit-html](https://github.com/Polymer/lit-html) style template to be imported by JS like [lit-element](https://github.com/Polymer/lit-element) .
+Compile Sass files to a [lit-html](https://github.com/Polymer/lit-html) style template to be imported by JS like [lit-element](https://github.com/Polymer/lit-element) .
 
 
 ## Motivation
