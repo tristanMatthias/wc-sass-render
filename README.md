@@ -15,19 +15,36 @@ This project exists to make your SASS modular, and importable by any style of We
 This will install `sass-render` as a global CLI tool.
 
 
-## Usage
-**Single usage**
-Use `-s` for a single file
+## Usage & options
+For a list of complete options, run `sass-render --help`
+
+**Simple usage**
+Renders a `./src/components/button-css.js` file
 ```
-sass-render -s styles.scss -t template.js -o button-styles-css.js -i ./node_modules
+sass-render ./src/components/button.scss
 ```
 
-**Directory usage**
-Use `-d` for a directory
+**Compile directory**
+Renders all scss files in recursively in directory with a custom template
 ```
-sass-render -d ./ -t template.js -i ./node_modules
+sass-render ./src/**/*.scss -t css-template.js
+```
+
+**Watching**
+Use `-w` to watch for changes
+```
+sass-render ./src/**/*.scss -w
 ```
 Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, outputted file will be `button-css.js`.
+
+**Custom template**
+Use `-t` to specify the file you'd like to use as a template. `sass-render` will replace `<% content %>` in the file.
+```
+sass-render ./src/components/button-css.js -t css-template.js
+```
+
+**Custom suffix**
+Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, outputted file will be `button-css.js`. This can be changed with the `--suffix` option.
 
 
 ## Importing
@@ -65,12 +82,15 @@ module.exports.CSS = '<% content %>';
 ## Contributions
 All pull requests and contributions are most welcome. Let's make the internet better!
 
+
 ## Moving forward / TODO
 - [ ] Watch command
 - [ ] Add tests
 
+
 ## Issues
 If you find a bug, please file an issue on the issue tracker on GitHub.
+
 
 ## Credits
 The concept of `wc-sass-render` was originally created by Google.
