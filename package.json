@@ -1,6 +1,6 @@
 {
   "name": "wc-sass-render",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Render Sass into lit templates",
   "main": "index.js",
   "bin": {
