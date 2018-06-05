@@ -8,18 +8,18 @@ I expanded this out to be non Material specific, and include libaries and recurs
 
 
 ## Installation
-`yarn global add wc-sass-render`
+`yarn global add sass-render`
 
 
 ## Usage
 **Single usage**
 ```
-wc-sass-render -s styles.scss -t template.js -o button-styles-css.js -i ./node_modules
+sass-render -s styles.scss -t template.js -o button-styles-css.js -i ./node_modules
 ```
 
 **Directory usage**
 ```
-wc-sass-render -d ./ -t template.js -i ./node_modules
+sass-render -d ./ -t template.js -i ./node_modules
 ```
 Files will be outputed as `[name]-css.js`. EG: If file is `button.scss`, outputed file will be `button-css.js`.
 
