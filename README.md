@@ -5,6 +5,7 @@ Compile Sass files to a [lit-html](https://github.com/Polymer/lit-html) style te
 ## Motivation
 > This project was written by inspired by [Google's Material Web Component Sass Render](https://github.com/material-components/material-components-web-components/tree/master/packages/sass-render).
 > I expanded this out to be non Material specific, and include libraries and recursive directory parsing.
+
 This project exists to make your SASS modular, and importable by any style of Web Components you want to use.
 
 
