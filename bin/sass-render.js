@@ -36,7 +36,6 @@ const sassRender = require('../index.js').sassRender;
             default: path.resolve(process.cwd(), 'node_modules')
         })
         .option('suffix', {
-            alias: 'S',
             type: 'string',
             describe: 'Suffix for the rendered file',
             default: '-css.js'
