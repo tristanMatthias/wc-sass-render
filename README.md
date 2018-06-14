@@ -84,7 +84,7 @@ All pull requests and contributions are most welcome. Let's make the internet be
 
 
 ## Moving forward / TODO
-- [ ] Watch command
+- [x] Watch command
 - [ ] Add tests
 
 
