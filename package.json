@@ -1,6 +1,6 @@
 {
   "name": "wc-sass-render",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Render Sass into lit templates",
   "homepage": "https://github.com/tristanMatthias/wc-sass-render",
   "keywords": [
