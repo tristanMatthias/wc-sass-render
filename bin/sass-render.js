@@ -16,8 +16,7 @@ const sassRender = require('../index.js').sassRender;
         .option('template', {
             alias: 't',
             type: 'string',
-            describe: 'Template file to use, must use `<% content %>` as delimiter',
-            default: path.resolve(__dirname, '../template.js')
+            describe: 'Template file to use, must use `<% content %>` as delimiter'
         })
         .option('watch', {
             alias: 'w',
@@ -49,6 +48,11 @@ const sassRender = require('../index.js').sassRender;
 
     function render(fp) {
         if (!o.quiet) console.log(`Rendering ${fp}...`);
+
+
+        if (!o.template) o.template = path.resolve(__dirname, '../template.js');
+        else o.template = path.resolve(process.cwd(), o.template);
+
 
         sassRender(fp, o.template, o.output, o.include, o.suffix).catch((err) => {
             console.error(err);
