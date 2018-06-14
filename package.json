@@ -2,11 +2,25 @@
   "name": "wc-sass-render",
   "version": "1.0.1",
   "description": "Render Sass into lit templates",
+  "homepage": "https://github.com/tristanMatthias/wc-sass-render",
+  "keywords": [
+    "web",
+    "components",
+    "sass",
+    "render",
+    "template",
+    "cli",
+    "watch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tristanMatthias/wc-sass-render"
+  },
   "main": "index.js",
   "bin": {
     "sass-render": "bin/sass-render.js"
   },
-  "author": "Google",
+  "author": "Tristan Matthias <hello@tristanmatthias.com>",
   "license": "Apache-2.0",
   "dependencies": {
     "gaze": "^1.1.3",
