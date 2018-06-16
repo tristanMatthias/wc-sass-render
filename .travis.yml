@@ -1,9 +1,12 @@
-language:
-  node_js
+language: node_js
 node_js:
-  - "10"
+- '10'
 install:
-  - npm install -g codecov
+- npm install -g codecov
+- npm install -g istanbul
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-  - codecov
+- istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+- codecov
+notifications:
+  slack:
+    secure: Lq4SjaAbDQ6pz17xakioHV1A8pORvmwXUSknUICCZpvHqMO4XUr423agwoE40BWDUPsP0Fjhbv4XbioxbttRqDe6HsxFvjfE1S0jExqQ1mZF0Zm7vDBoVdFfGDbqmosSK6xE9ugHvPPXboVbq2MPWp48T/fYzkxVskLNlx5OEM14AJ+6PnuFgdVSSlhXcIG3KFYwVP//4VUEHo8T3Gumj1vOCjZl16WjgvvIhf5Q7bKGizCtwbyxY7P9Za+f76aVCWR07ZLKB+803+XLFztCdEQrRdteccOued1iU7N4P4aUfnSCgbepCQxqZvhzk0Hxoayu2zfLGIfoIqngJiXPi+qXLXeDwiuNUjWPFpf2rwD8r1hs4REvMaG692CmAJ+E1fXrg6+XXqzWl5GxnKYRG+kNYtauL8rnBuv8NWLF+1O2EmAu+gH5P7gqNY8sIWPDvk9qN9SyT0mSJ3+4fBTsyOW/6VQgvRwc0cY9uErbdlNHGkK945p+j8yub3cS0smgI0LnDOo6rILaSZJzgUOqJW1qA5VOKSA6t65k49cTygXkIq/8Ic7bY7e8BDUjyFu57rbNv/n6eaPs2xuvhcriVdBVE3INzo0Kl17CeTn9XHCD//lbfS2TQvQQhoZO6RWf8ID3fK1okjV0OR9F96XXqJTcxeFzI49aE6XmxIAKqd0=
