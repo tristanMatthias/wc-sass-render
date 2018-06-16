@@ -3,7 +3,7 @@ const yargs = require('yargs');
 const path = require('path');
 const gaze = require('gaze');
 const glob = require('glob');
-const sassRender = require('../index.js').sassRender;
+const Renderer = require('../SassRenderer.js');
 
 (async() => {
     const o = yargs
@@ -31,8 +31,7 @@ const sassRender = require('../index.js').sassRender;
         .option('include', {
             alias: 'i',
             type: 'string',
-            describe: 'Include directory for @imports (EG: node_modules)',
-            default: path.resolve(process.cwd(), 'node_modules')
+            describe: 'Include directory for @imports (EG: node_modules)'
         })
         .option('suffix', {
             type: 'string',
@@ -46,20 +45,23 @@ const sassRender = require('../index.js').sassRender;
         })
         .argv;
 
+
+    const converter = new Renderer({
+        template: o.template,
+        include: o.include,
+        suffix: o.suffix
+    });
+
+
     function render(fp) {
         if (!o.quiet) console.log(`Rendering ${fp}...`);
 
-
-        if (!o.template) o.template = path.resolve(__dirname, '../template.js');
-        else o.template = path.resolve(process.cwd(), o.template);
-
-
-        sassRender(fp, o.template, o.output, o.include, o.suffix).catch((err) => {
+        converter.render(fp, o.output).catch((err) => {
             console.error(err);
             process.exit(-1);
         }).then(() => {
             if (!o.quiet) console.log(`Complete!`);
-        })
+        });
     }
 
     glob(o.input, (err, files) => {

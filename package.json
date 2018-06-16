@@ -1,7 +1,7 @@
 {
   "name": "wc-sass-render",
   "version": "1.0.2",
-  "description": "Render Sass into lit templates",
+  "description": "Render Sass into importable templates for Typescript or Javascript",
   "homepage": "https://github.com/tristanMatthias/wc-sass-render",
   "keywords": [
     "web",
@@ -16,16 +16,23 @@
     "type": "git",
     "url": "https://github.com/tristanMatthias/wc-sass-render"
   },
-  "main": "index.js",
+  "main": "SassRenderer.js",
   "bin": {
     "sass-render": "bin/sass-render.js"
   },
   "author": "Tristan Matthias <hello@tristanmatthias.com>",
+  "scripts": {
+    "test": "mocha"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "gaze": "^1.1.3",
     "glob": "^7.1.2",
     "node-sass": "^4.8.3",
     "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
   }
 }
