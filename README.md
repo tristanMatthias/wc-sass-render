@@ -1,4 +1,9 @@
 # Web Component SASS Render
+
+[![npm](https://img.shields.io/npm/v/wc-sass-render.svg)](http://npmjs.com/package/wc-sass-render)
+[![Travis](https://img.shields.io/travis/tristanMatthias/wc-sass-render.svg)](https://travis-ci.org/tristanMatthias/wc-sass-render)
+[![Codecov](https://img.shields.io/codecov/c/github/codecov/example-python.svg)](https://codecov.io/gh/tristanMatthias/wc-sass-render)
+
 Compile Sass files to a [lit-html](https://github.com/Polymer/lit-html) style template to be imported by JS like [lit-element](https://github.com/Polymer/lit-element) .
 
 
@@ -85,7 +90,7 @@ All pull requests and contributions are most welcome. Let's make the internet be
 
 ## Moving forward / TODO
 - [x] Watch command
-- [ ] Add tests
+- [x] Add tests
 
 
 ## Issues

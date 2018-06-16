@@ -1,2 +1,6 @@
-*test
+test*/
 .gitignore
+.nyc_output
+coverage*
+.travis.yml
+*.log

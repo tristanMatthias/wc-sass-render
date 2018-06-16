@@ -1,10 +1,15 @@
 const path = require('path');
 const fs = require('fs');
 const {promisify} = require('util');
-const chai = require('chai');
+const chai = require("chai");
+const chaiAsPromised = require("chai-as-promised");
+const Renderer = require('../SassRenderer');
+
+
 var {expect} = chai;
 var should = chai.should();
-const Renderer = require('../SassRenderer');
+chai.use(chaiAsPromised);
+
 
 const readFile = promisify(fs.readFile);
 const deleteFile = promisify(fs.unlink);
@@ -126,6 +131,14 @@ describe('SassRenderer', function() {
             await r.render(INPUT_FILE_DEFAULT);
             const cssModule = (await readFile(OUTPUT_FILE_DEFAULT)).toString();
             cssModule.should.equal(OUTPUT_EXPECTED_CUSTOM);
+        });
+
+        it('throws error if no match found', async function() {
+            const r = new Renderer({
+                template: INPUT_FILE_DELIM
+            });
+            const promise = r.render(INPUT_FILE_DEFAULT);
+            return promise.should.be.rejectedWith(/Template file .* did not contain template delimiters/);
         });
 
         it('renders with a custom suffix', async function() {
