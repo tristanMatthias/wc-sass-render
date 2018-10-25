@@ -49,7 +49,9 @@ sass-render ./src/components/button-css.js -t css-template.js
 ```
 
 **Custom suffix**
-Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, outputted file will be `button-css.js`. This can be changed with the `--suffix` option.
+Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, outputted file will be `button-css.js`. This can be changed with the `--suffix` option. 
+
+**NOTE**: if you use a `-` (dash) in your suffix name, eg: `--suffix '-css.js'`, then quotation marks are needed around the suffix (to tell bash it's not another flag)
 
 
 ## Importing
