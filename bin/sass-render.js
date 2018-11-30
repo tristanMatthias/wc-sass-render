@@ -7,7 +7,7 @@ const Renderer = require('../SassRenderer.js');
 
 (async() => {
     const o = yargs
-        .command('$0 <input>', 'Compile Sass to a template')
+        .command('$0 [input..]', 'Compile Sass to a template')
         .option('output', {
             alias: 'o',
             type: 'string',
@@ -64,8 +64,10 @@ const Renderer = require('../SassRenderer.js');
         });
     }
 
-    glob(o.input, (err, files) => {
-        files.forEach(render);
+    o.input.forEach(i => {
+        glob(i, (err, files) => {
+            files.forEach(render);
+        });
     });
 
     if (o.watch) {

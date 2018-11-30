@@ -35,6 +35,12 @@ Renders all scss files in recursively in directory with a custom template
 sass-render ./src/**/*.scss -t css-template.js
 ```
 
+**Compile multiple files or directories**
+Renders all scss files in recursively in directory with a custom template
+```
+sass-render ./src/**/*.scss ./lib/component.scss -t css-template.js
+```
+
 **Watching**
 Use `-w` to watch for changes
 ```
@@ -49,7 +55,7 @@ sass-render ./src/components/button-css.js -t css-template.js
 ```
 
 **Custom suffix**
-Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, outputted file will be `button-css.js`. This can be changed with the `--suffix` option. 
+Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, outputted file will be `button-css.js`. This can be changed with the `--suffix` option.
 
 **NOTE**: if you use a `-` (dash) in your suffix name, eg: `--suffix '-css.js'`, then quotation marks are needed around the suffix (to tell bash it's not another flag)
 
