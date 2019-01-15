@@ -25,7 +25,7 @@ const INPUT_FILE_DELIM = path.resolve(__dirname, '../test-templates/otherDelim.j
 const OUTPUT_FILE_DEFAULT = path.resolve(__dirname, './test-css.js');
 const OUTPUT_FILE_CUSTOM = path.resolve(__dirname, './test-styles.ts');
 
-const OUTPUT_EXPECTED_DEFAULT = `import {html} from '@polymer/lit-element';
+const OUTPUT_EXPECTED_DEFAULT = `import {html} from 'lit-element';
 export default html\`<style>a{color:red}
 </style>\`;\n`;
 
