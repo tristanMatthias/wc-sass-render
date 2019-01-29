@@ -35,6 +35,9 @@ const OUTPUT_EXPECTED_CUSTOM = `export default \`<style>a{color:red}
 const OUTPUT_EXPECTED_LIB = `export default \`<style>a{background:blue}
 </style>\`;\n`;
 
+const OUTPUT_EXPECTED_MULTI_LIB = `export default \`<style>a{background:blue}a{font-weight:bold}
+</style>\`;\n`;
+
 
 const deleteRenders = () => {
     [OUTPUT_FILE_DEFAULT, OUTPUT_FILE_CUSTOM].forEach(f => {
@@ -67,7 +70,7 @@ describe('SassRenderer', function() {
         it('should allow for and set custom options', function() {
             const customOptions = {
                 delim: /{{css}}/,
-                include: './any',
+                include: ['./any'],
                 template: '/customTemplate.js',
                 suffix: '-styles.js'
             }
@@ -153,11 +156,24 @@ describe('SassRenderer', function() {
         it('renders with a custom SASS lib includes', async function() {
             const r = new Renderer({
                 template: INPUT_FILE_TEMPLATE,
-                include: path.resolve(__dirname, '../test-templates')
+                include: [path.resolve(__dirname, '../test-templates')]
             });
             await r.render(path.resolve(__dirname, 'test-with-include.scss'), OUTPUT_FILE_DEFAULT);
             const cssModule = (await readFile(OUTPUT_FILE_DEFAULT)).toString();
             cssModule.should.equal(OUTPUT_EXPECTED_LIB);
+        });
+
+        it('renders with multiple custom SASS lib includes', async function() {
+            const r = new Renderer({
+                template: INPUT_FILE_TEMPLATE,
+                include: [
+                    path.resolve(__dirname, '../test-templates'),
+                    path.resolve(__dirname, '../test-templates/nested-include')
+                ]
+            });
+            await r.render(path.resolve(__dirname, 'test-with-multi-include.scss'), OUTPUT_FILE_DEFAULT);
+            const cssModule = (await readFile(OUTPUT_FILE_DEFAULT)).toString();
+            cssModule.should.equal(OUTPUT_EXPECTED_MULTI_LIB);
         });
     });
 });

@@ -1,0 +1,7 @@
+@import 'lib';
+@import 'nested-include';
+
+a {
+    @extend %blue;
+    @extend %bold;
+}

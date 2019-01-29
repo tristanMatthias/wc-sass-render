@@ -59,6 +59,14 @@ Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, output
 
 **NOTE**: if you use a `-` (dash) in your suffix name, eg: `--suffix '-css.js'`, then quotation marks are needed around the suffix (to tell bash it's not another flag)
 
+**Import custom libraries**
+By default, wc-sass-render will include the `node_modules` relative to the current directory. Passing the `-i` allows you to include custom directories. You can include multiple directories by comma separating them.
+
+```
+sass-render ./src/**/*.scss -i '../sass-lib/'
+sass-render ./src/**/*.scss -i '../sass-lib/, ../another-lib'
+```
+
 
 ## Importing
 Once your SASS files are converted into js/ts files, you can use them inside a library like `lit-element`:

@@ -11,7 +11,7 @@ const Renderer = require('../SassRenderer.js');
         .option('output', {
             alias: 'o',
             type: 'string',
-            describe: 'Output file path',
+            describe: 'Output file path'
         })
         .option('template', {
             alias: 't',
@@ -45,10 +45,14 @@ const Renderer = require('../SassRenderer.js');
         })
         .argv;
 
+    let include = o.include;
+    if (include) include = include
+        .split(',')
+        .map(i => path.resolve(process.cwd(), i));
 
     const converter = new Renderer({
         template: o.template,
-        include: o.include,
+        include,
         suffix: o.suffix
     });
 

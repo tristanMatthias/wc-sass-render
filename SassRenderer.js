@@ -9,7 +9,7 @@ const writeFile = util.promisify(fs.writeFile);
 
 DEFAULT_OPTIONS = {
     delim: /<%\s*content\s*%>/,
-    include: path.resolve(process.cwd(), 'node_modules'),
+    include: [path.resolve(process.cwd(), 'node_modules')],
     template: path.resolve(__dirname, 'template.js'),
     suffix: '-css.js'
 };
@@ -29,7 +29,7 @@ module.exports = class SassRenderer {
     async css(sassFile) {
         return (await renderSass({
             file: sassFile,
-            includePaths: [this.include],
+            includePaths: this.include,
             outputStyle: 'compressed',
         })).css.toString();
     }
