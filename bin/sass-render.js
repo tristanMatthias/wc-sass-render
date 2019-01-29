@@ -58,6 +58,7 @@ const Renderer = require('../SassRenderer.js');
 
 
     function render(fp) {
+        if (path.basename(fp).startsWith('_')) return false;
         if (!o.quiet) console.log(`Rendering ${fp}...`);
 
         converter.render(fp, o.output).catch((err) => {
