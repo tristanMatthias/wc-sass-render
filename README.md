@@ -54,6 +54,12 @@ Use `-t` to specify the file you'd like to use as a template. `sass-render` will
 sass-render ./src/components/button-css.js -t css-template.js
 ```
 
+**Expanded CSS**
+Use `-e` to enable expanded rendering of output CSS. Render SASS outputs CSS as 'compressed' by default, which may cause parsing errors for some projects.
+```
+sass-render ./src/components/button-css.js -t -e css-template.js
+```
+
 **Custom suffix**
 Files will be outputted as `[name]-css.js`. EG: If file is `button.scss`, outputted file will be `button-css.js`. This can be changed with the `--suffix` option.
 
