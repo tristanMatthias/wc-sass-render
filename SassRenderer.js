@@ -11,7 +11,8 @@ DEFAULT_OPTIONS = {
     delim: /<%\s*content\s*%>/,
     include: [path.resolve(process.cwd(), 'node_modules')],
     template: path.resolve(__dirname, 'template.js'),
-    suffix: '-css.js'
+    suffix: '-css.js',
+    expandedOutput: false
 };
 
 module.exports = class SassRenderer {
@@ -22,6 +23,7 @@ module.exports = class SassRenderer {
         if (options.include !== undefined) settings.include = options.include;
         if (options.template !== undefined) settings.template = options.template;
         if (options.suffix !== undefined) settings.suffix = options.suffix;
+        if (options.expandedOutput !== undefined) settings.expandedOutput = options.expandedOutput;
 
         Object.assign(this, settings);
     }
@@ -30,7 +32,7 @@ module.exports = class SassRenderer {
         return (await renderSass({
             file: sassFile,
             includePaths: this.include,
-            outputStyle: 'compressed',
+            outputStyle: this.expandedOutput ? 'expanded' : 'compressed',
         })).css.toString();
     }
 
