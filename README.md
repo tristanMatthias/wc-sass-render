@@ -96,8 +96,8 @@ window.customElements.define('my-button', Button);
 ## Custom template
 By default, the template is:
 ```js
-import {html} from '@polymer/lit-element';
-export const style = html`<style><% content %></style>`;
+import {html} from 'lit-element';
+export default html`<style><% content %></style>`;
 ```
 
 This can be overridden with the `-t` option to your own file. EG:
