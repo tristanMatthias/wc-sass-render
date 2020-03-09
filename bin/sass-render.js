@@ -23,6 +23,11 @@ const Renderer = require('../SassRenderer.js');
             type: 'boolean',
             describe: 'Watch the file system for changes and render automatically'
         })
+        .option('expanded', {
+            alias: 'e',
+            type: 'boolean',
+            describe: 'Output CSS in expanded format (renders compressed by default).',
+        })
         .option('help', {
             alias: 'h',
             type: 'boolean',
@@ -53,7 +58,8 @@ const Renderer = require('../SassRenderer.js');
     const converter = new Renderer({
         template: o.template,
         include,
-        suffix: o.suffix
+        suffix: o.suffix,
+        expandedOutput: o.expanded
     });
 
 

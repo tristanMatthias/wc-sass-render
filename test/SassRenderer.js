@@ -72,13 +72,15 @@ describe('SassRenderer', function() {
                 delim: /{{css}}/,
                 include: ['./any'],
                 template: '/customTemplate.js',
-                suffix: '-styles.js'
+                suffix: '-styles.js',
+                expandedOutput: true
             }
             const r = new Renderer(customOptions);
             r.delim.should.equal(customOptions.delim);
             r.include.should.equal(customOptions.include);
             r.template.should.equal(customOptions.template);
             r.suffix.should.equal(customOptions.suffix);
+            r.expandedOutput.should.equal(customOptions.expandedOutput);
         });
     });
 
