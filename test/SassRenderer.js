@@ -21,12 +21,18 @@ const DEFAULT_OPTIONS = require('../SassRenderer').DEFAULT_OPTIONS;
 const INPUT_FILE_DEFAULT = path.resolve(__dirname, './test.scss');
 const INPUT_FILE_TEMPLATE = path.resolve(__dirname, '../test-templates/otherTemplate.js');
 const INPUT_FILE_DELIM = path.resolve(__dirname, '../test-templates/otherDelim.js');
+const INPUT_FILE_ESCAPE = path.resolve(__dirname, './test-escape-char.scss');
 
 const OUTPUT_FILE_DEFAULT = path.resolve(__dirname, './test-css.js');
 const OUTPUT_FILE_CUSTOM = path.resolve(__dirname, './test-styles.ts');
+const OUTPUT_FILE_ESCAPE = path.resolve(__dirname, './test-escape-char.js');
 
 const OUTPUT_EXPECTED_DEFAULT = `import {html} from 'lit-element';
 export default html\`<style>a{color:red}
+</style>\`;\n`;
+
+const OUTPUT_EXPECTED_ESCAPE = `import {html} from 'lit-element';
+export default html\`<style>.char-render{content:"\\\\f2e6"}
 </style>\`;\n`;
 
 const OUTPUT_EXPECTED_CUSTOM = `export default \`<style>a{color:red}
@@ -40,7 +46,7 @@ const OUTPUT_EXPECTED_MULTI_LIB = `export default \`<style>a{background:blue}a{f
 
 
 const deleteRenders = () => {
-    [OUTPUT_FILE_DEFAULT, OUTPUT_FILE_CUSTOM].forEach(f => {
+    [OUTPUT_FILE_DEFAULT, OUTPUT_FILE_CUSTOM, OUTPUT_FILE_ESCAPE].forEach(f => {
         try {
             if (fs.statSync(f).isFile()) fs.unlinkSync(f);
         } catch (e) {}
@@ -107,11 +113,18 @@ describe('SassRenderer', function() {
             const cssModule = (await readFile(OUTPUT_FILE_DEFAULT)).toString();
             cssModule.should.equal(OUTPUT_EXPECTED_DEFAULT);
         });
-
+        
         it('should render SASS into a custom file with render(src, output)', async () => {
             const r = new Renderer();
             await r.render(INPUT_FILE_DEFAULT, OUTPUT_FILE_CUSTOM);
             ((await stat(OUTPUT_FILE_CUSTOM)).isFile()).should.equal(true);
+        });
+        
+        it('should replace CSS single escape characters with double escapes', async () => {
+            const r = new Renderer();
+            await r.render(INPUT_FILE_ESCAPE, OUTPUT_FILE_ESCAPE);
+            const cssModule = (await readFile(OUTPUT_FILE_ESCAPE)).toString();
+            cssModule.should.equal(OUTPUT_EXPECTED_ESCAPE);
         });
     });
 
