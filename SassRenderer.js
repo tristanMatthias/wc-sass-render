@@ -55,7 +55,6 @@ module.exports = class SassRenderer {
         if (!output) {
             output = `${source.split('.').slice(0, -1).join('.')}${suffix}`;
         }
-        console.log("test")
         return writeFile(output, newContent, 'utf-8');
     }
 }
