@@ -29,11 +29,13 @@ module.exports = class SassRenderer {
     }
 
     async css(sassFile) {
-        return (await renderSass({
+        let result = (await renderSass({
             file: sassFile,
             includePaths: this.include,
             outputStyle: this.expandedOutput ? 'expanded' : 'compressed',
         })).css.toString();
+
+        return result.replace(/\\/g,"\\\\");
     }
 
     async render(source, output) {
@@ -53,7 +55,6 @@ module.exports = class SassRenderer {
         if (!output) {
             output = `${source.split('.').slice(0, -1).join('.')}${suffix}`;
         }
-
         return writeFile(output, newContent, 'utf-8');
     }
 }
