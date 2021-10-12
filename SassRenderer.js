@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const sass = require('node-sass');
+const sass = require('sass');
 
 const renderSass = util.promisify(sass.render);
 const readFile = util.promisify(fs.readFile);
